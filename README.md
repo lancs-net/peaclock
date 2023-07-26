@@ -6,22 +6,33 @@ A responsive and customizable clock, timer, and stopwatch for the terminal.
 Click the above image to view a video of __Peaclock__ in action.
 
 ## Contents
-* [About](#about)
-  * [Features](#features)
-* [Usage](#usage)
-* [Binary Clock](#binary-clock)
-* [Terminal Compatibility](#terminal-compatibility)
-* [Pre-Build](#pre-build)
-  * [Environments](#environments)
-  * [Compilers](#compilers)
-  * [Dependencies](#dependencies)
-  * [Linked Libraries](#linked-libraries)
-  * [Included Libraries](#included-libraries)
-  * [macOS](#macos)
-* [Build](#build)
-* [Install](#install)
-* [Configuration](#configuration)
-* [License](#license)
+- [Peaclock](#peaclock)
+  - [Contents](#contents)
+  - [About](#about)
+    - [Features](#features)
+  - [Usage](#usage)
+  - [Binary Clock](#binary-clock)
+  - [Terminal Compatibility](#terminal-compatibility)
+  - [Pre-Build](#pre-build)
+    - [Environments](#environments)
+    - [Compilers](#compilers)
+    - [Dependencies](#dependencies)
+    - [Linked Libraries](#linked-libraries)
+    - [Included Libraries](#included-libraries)
+    - [macOS](#macos)
+  - [Build](#build)
+    - [Docker](#docker)
+  - [Install](#install)
+    - [Docker](#docker-1)
+  - [Configuration](#configuration)
+    - [default](#default)
+    - [octobanana](#octobanana)
+    - [digital](#digital)
+    - [digital-party](#digital-party)
+    - [binary](#binary)
+    - [binary-party](#binary-party)
+    - [binary-unicode](#binary-unicode)
+  - [License](#license)
 
 ## About
 __Peaclock__ is a responsive and customizable clock, timer, and stopwatch for the terminal.
@@ -142,12 +153,29 @@ The included shell script will build the project in release mode using the `buil
 ```sh
 ./RUNME.sh build
 ```
+### Docker
+The included Dockerfile can be used to build peaclock as a docker container
+image. This includes all the dependencies for the build.
+
+```sh
+docker build --rm -t peaclock:latest -f Dockerfile .
+```
 
 ## Install
 The included shell script will install the project in release mode using the `install` subcommand:
 
 ```sh
 ./RUNME.sh install
+```
+
+### Docker
+The container image can be run to show peaclock provided [an image is
+built](#docker) or can be pulled from a registry. The command below can be used
+where the image (`peaclock:latest`) is replaced with the tag of a useable
+peaclock image. 
+
+```sh
+docker run --rm -it --name peaclock -v /etc/localtime:/etc/localtime:ro peaclock:latest
 ```
 
 ## Configuration
